@@ -50,9 +50,12 @@ void draw() {
     for (int i = 0; i < zombies.length; i ++) {
       if (bullets[j] != null) {
         if (dist(zombies[i].positionX, zombies[i].positionY, bullets[j].positionX, bullets[j].positionY) < 30) {
-          zombies[i] = new Zombie();
+          zombies[i].size *= 1.2;
           bullets[j] = null;
           killed += 1 ;
+        }
+        if (zombies[i].size > 86.4){
+          zombies[i] = new Zombie();
         }
       }
     }
@@ -97,9 +100,7 @@ class Shooter {
     if (keyPressed && key == ' ') {
       if (frameCount % 10 == 0){
         bullets = (Bullet[])append(bullets, new Bullet(this.positionX, this.positionY));
-        println(frameCount);
       }
-       println(frameCount);
     }
   }
 } 
